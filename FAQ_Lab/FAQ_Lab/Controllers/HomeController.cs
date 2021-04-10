@@ -16,7 +16,6 @@ namespace FAQ_Lab.Controllers
             context = ctx; 
         }
 
-
         public IActionResult Index(string topic, string category)
         {
             ViewBag.Topics = context.Topics.OrderBy(t => t.Name).ToList();
