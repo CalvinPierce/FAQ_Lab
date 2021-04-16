@@ -2,32 +2,33 @@
 @{
     ViewBag.Title = "FAQs";
 }
-<table class="table-borderless" style="margin-right:auto; margin-left:auto;">
 
-    <tr class="col-10">
-        <td><a asp-action="Index" asp-route-category="" asp-route-topic="">All</a></td>
-        @foreach (Topic t in ViewBag.Topics)
-        {
-            <td><a asp-action="Index" asp-route-topic="@t.TopicId">@t.Name</a></td>
-        }
 
-    </tr>
-
-</table>
+<ul class="nav justify-content-center">
+    <li class="nav-item"><a class="nav-link text-secondary" style="font-size:large" asp-action="Index" asp-route-category="" asp-route-topic="">All FAQs</a></li>
+    @foreach (Topic t in ViewBag.Topics)
+    {
+        <li class="nav-item"><a class="nav-link text-secondary" asp-action="Index" asp-route-category="" asp-route-topic="@t.TopicId">@t.Name</a></li>
+    }
+</ul>
 
 <div>
 
     <div class="row">
 
-        <div class="col-sm-3">
-            <div class="list-group">
+        <div class="col-sm-2">
+            <table class="table table-bordered">
                 @foreach (Category c in ViewBag.Categories)
                 {
-                    <a asp-action="Index"
-                       asp-route-category="@c.CategoryId"
-                       asp-route-topic="@ViewBag.SelectedTopic">@c.Name</a>
+                    <tr>
+                        <td class="text-center">
+                            <a class="text-secondary" asp-action="Index"
+                               asp-route-category="@c.CategoryId"
+                               asp-route-topic="@ViewBag.SelectedTopic">@c.Name</a>
+                        </td>
+                    </tr>
                 }
-            </div>
+            </table>
 
         </div>
 
@@ -35,18 +36,18 @@
             <table class="table">
                 @foreach (FAQ faq in Model)
                 {
-                    <tr class="row">
+                    <tr class="row border-left border-right">
                         <td class="col">
-                            <b>@faq.Question</b>@faq.Answer
+                            <b>@faq.Question</b> @faq.Answer
                         </td>
                     </tr>
-                    <tr class="row">
-                        <td class="col">Topic: @faq.Topic.Name</td>
-                        <td class="col">Category: @faq.Category.Name</td>
+                    <tr class="row border-left border-right border-bottom">
+                        <td class="col border-0">Topic: @faq.Topic.Name</td>
+                        <td class="col border-0">Category: @faq.Category.Name</td>
                     </tr>
                 }
             </table>
         </div>
     </div>
 
-    </div>
+</div>

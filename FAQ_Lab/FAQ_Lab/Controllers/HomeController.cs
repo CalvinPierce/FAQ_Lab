@@ -32,7 +32,7 @@ namespace FAQ_Lab.Controllers
                 faqs = faqs.Where(f => f.TopicId == topic);
             }
 
-            if (!string.IsNullOrEmpty(topic))
+            if (!string.IsNullOrEmpty(category))
             {
                 faqs = faqs.Where(f => f.CategoryId == category);
             }
